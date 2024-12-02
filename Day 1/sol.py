@@ -1,5 +1,5 @@
 import os
-os.chdir('C:/Users/tongl/adventOfCode/Day 1')
+os.chdir('C:/advent-of-code/Day 1')
 my_file = open("input.txt", "r") 
   
 # reading the file 
@@ -22,10 +22,16 @@ for i in range(0, len(data_into_list)):
 list_1.sort()
 list_2.sort()
 
+set_1 = set(list_1)
+
 res = 0
 
 for i in range(0, len(list_1)):
-    res += abs(list_1[i] - list_2[i])
+    multiplier = 0
+    for j in range(0, len(list_2)):
+        if list_2[j] == list_1[i]:
+            multiplier += 1
+    res += list_1[i] * multiplier
 
 print(res)
 my_file.close() 
